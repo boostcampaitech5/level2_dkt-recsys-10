@@ -22,3 +22,10 @@ base_rule/
     |-- ensemble_userID_ItemID.csv
     `-- userID.csv
 ```
+
+---
+
+## - result [auroc, accuracy]
+> assessmentItemID - [0.7638, 0.6909]
+>
+> assessmentItemID, KnowledgeTag [1:1 ensemble] - [0.7598, 0.6613]
