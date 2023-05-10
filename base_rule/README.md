@@ -20,7 +20,7 @@ base_rule/
     |-- ensemble_ItemID_Tag.csv [0.7598, 0.6613]
     |-- ensemble_all.csv [0.7785, 0.6747]
     |-- ensemble_all_cut_50_result.csv
-    |-- ensemble_userID_ItemID.csv
+    |-- ensemble_userID_ItemID.csv [0.7702, 0.6532]
     `-- userID.csv
 ```
 
@@ -38,3 +38,5 @@ base_rule/
 > cut 30% [0.7613, 0.6909]
 >
 > cut 50% [0.6930, 0.6909]
+>
+> userID, assessmentItemID - 1:1 앙상블 [0.7702, 0.6532]
