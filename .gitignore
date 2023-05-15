@@ -164,3 +164,4 @@ outputs/
 catboost_info/
 *.csv
 *.pkl
+_dummy/
