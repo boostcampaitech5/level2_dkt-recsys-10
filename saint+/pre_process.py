@@ -97,9 +97,9 @@ def pre_process(df, split_ratio=0.9,train=True):
 
 if __name__ == "__main__":
     # train과 test 합쳐서 answerCode가 -1인 것 제외
-    # total_data_path = './data/total_data.csv'
-    # total_df = pd.read_csv(total_data_path)
-    # pre_process(total_df,0.9,True)
+    total_data_path = './data/total_data.csv'
+    total_df = pd.read_csv(total_data_path)
+    pre_process(total_df,0.9,True)
     
     # train_data_path = './data/train_data.csv'
     # train_df = pd.read_csv(train_data_path)
