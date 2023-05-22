@@ -1,5 +1,5 @@
 # Structure
-
+```bash
 ─ saint+
   ├── README.md
   ├── after_data # 전처리 후 데이터 grouping
@@ -17,9 +17,9 @@
   ├── submission.py
   ├── train.py
   └── utils.py
-
+```
 # Run
-'''
+```
 1.
 python pre_process.py
 python train.py
@@ -27,4 +27,4 @@ python submission.py
 
 2. kfold
 python kfold.py
-'''
+```
