@@ -34,7 +34,7 @@ def catboost_classifier(X_train, y_train, X_test, y_test, submission_dataset,con
     test_pred = model.predict(submission_dataset)
     id_list = range(len(test_pred))
     df = pd.DataFrame({'id': id_list, 'prediction': test_pred})
-    df.to_csv('submit_new.csv', index=False)
+    df.to_csv(config.dir_name + '/submission.csv', index=False)
 
 
     print('---------- sumbit.csv info ----------')
