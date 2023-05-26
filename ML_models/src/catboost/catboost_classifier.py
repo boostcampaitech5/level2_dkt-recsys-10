@@ -42,6 +42,15 @@ def catboost_classifier(X_train, y_train, X_test, y_test, submission_dataset,con
     print(f"Count of 0s: {np.sum(preds_binary == 0)}")
     print(f"Count of 1s: {np.sum(preds_binary == 1)}")
 
+    # 피처 중요도 확인
+    feature_importances = model.feature_importances_
+
+    # 중요도를 기준으로 내림차순으로 피처 정렬
+    sorted_features = sorted(zip(X_train.columns, feature_importances), key=lambda x: x[1], reverse=True)
+
+    # 정렬된 피처의 중요도 출력
+    for feature, importance in sorted_features:
+        print(f"피처: {feature}, 중요도: {importance}")
 
 if __name__ == "__main__":
     print('test')
