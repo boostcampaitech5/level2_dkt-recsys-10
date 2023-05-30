@@ -4,7 +4,7 @@
 
 # level2_dkt-recsys-10
 
-# 💯 Deep Knowledge Tracing
+# 💡 Deep Knowledge Tracing
 
 ## 🏆 대회 개요
 
@@ -14,7 +14,7 @@
 
 DKT는 Deep Knowledge Tracing의 약자로 우리의 "지식 상태"를 추적하는 딥러닝 방법론입니다.
 
-## 💡 모델
+## 🦆 모델
 
 ### 1. Transformer Based
 
