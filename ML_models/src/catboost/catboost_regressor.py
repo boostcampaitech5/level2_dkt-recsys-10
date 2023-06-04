@@ -1,0 +1,61 @@
+import pandas as pd
+import catboost as cb
+import numpy as np
+
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import accuracy_score
+
+def catboost_regressor(X_train, y_train, X_test, y_test, submission_dataset,config):
+    early_stop_rounds = config.catboost_setting.early_stop_rounds
+
+    cat_feature = X_train.select_dtypes(include=['int']).keys().to_list()
+    numeric_feature = X_train.select_dtypes(include=['float']).keys().to_list()
+    print(f"cat_feature: {cat_feature}")
+    print(f"numeric_feature: {numeric_feature}")
+
+    model = cb.CatBoostRegressor(
+        **config.catboost_hyperparameters.CatBoostRegressor,
+        cat_features= cat_feature,
+    )
+    
+    model.fit(
+        X_train, y_train,
+        eval_set=(X_test, y_test),
+        early_stopping_rounds=early_stop_rounds,
+        use_best_model=True,
+        verbose=True
+    )
+
+    
+    # catboost Regressor
+    preds = model.predict(X_test)
+    auc = roc_auc_score(y_test, preds)
+    
+    preds_binary = np.where(preds >= 0.5, 1, 0)
+
+    acc = accuracy_score(y_test, preds_binary)
+    
+    print(f"VALID AUC: {auc} ACC: {acc}\n")
+
+
+    test_pred = model.predict(submission_dataset)
+    id_list = range(len(test_pred))
+    df = pd.DataFrame({'id': id_list, 'prediction': test_pred})
+    df.to_csv(config.dir_name + '/submission.csv', index=False)
+
+    print('---------- sumbit.csv info ----------')
+    preds_binary = np.where(test_pred >= 0.5, 1, 0)
+    print(f"Count of 0s: {np.sum(preds_binary == 0)}")
+    print(f"Count of 1s: {np.sum(preds_binary == 1)}")
+    
+    # 피처 중요도 확인
+    feature_importances = model.feature_importances_
+
+    # 중요도를 기준으로 내림차순으로 피처 정렬
+    sorted_features = sorted(zip(X_train.columns, feature_importances), key=lambda x: x[1], reverse=True)
+
+    # 정렬된 피처의 중요도 출력
+    for feature, importance in sorted_features:
+        print(f"피처: {feature}, 중요도: {importance}")
+if __name__ == "__main__":
+    print('test')

@@ -1,0 +1,145 @@
+# catboost_hydra.yaml
+hydra:
+  run:
+    dir: /opt/ml/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+catboost_log_file: /opt/ml/project/level2_dkt-recsys-10/catboost_info/catboost_training.json
+destination_file: /opt/ml/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}/catboost_training.json
+dir_name: /opt/ml/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+
+model:
+  select_model: catboost_classifier # [catboost_classifier, catboost_regressor,xgboost_classifier]
+
+dataset:
+  dataset: /opt/ml/project/BoostCamp_DKT_Database/preprocess/ML_Main_Dataset/dataset_all_data.csv
+  # dataset: /opt/ml/project/BoostCamp_DKT_Database/preprocess/Sequence_Main_Dataset/test_dataset_all_data.csv
+  submission: /opt/ml/project/BoostCamp_DKT_Database/preprocess/ML_Main_Dataset/submission_all_data.csv
+
+dataset_feature:
+  train_data_cut: all # [all, head, tail], [head_tail_one, head_tail_group_one, head_one, tail_one] - userID별 첫 문제, 마지막 문제를 test에 사용
+  test_split: 0.5 # 1> value > 0
+  feature: [
+            # Base feature [base데이터 기반으로 검증을 하기 때문에 변경 금지]
+            'userID', 'assessmentItemID', 'testId', 'Timestamp',
+            'KnowledgeTag','LargeCategory',
+            'TimeElapsed', 'TimeElapsed_category',
+
+            # Base feature add
+            # 'test_num', 'question_num',
+
+            # Timestamp 
+            # 'year', 'month', 'day',
+            'weekday', 'hour',
+
+            # userID_base
+            # 'userID_mean',
+            # 'userID_assessmentItemID_mean',
+            # 'userID_testId_mean',
+            # 'userID_KnowledgeTag_mean',
+            # 'userID_LargeCategory_mean',
+            # 'userID_TimeElapsed_category_mean',
+            # 'userID_weekday_mean',
+            # 'userID_hour_mean',
+
+            # assessmentItemID_base
+            # 'assessmentItemID_mean',
+
+            # 'testId_mean',
+            # 'KnowledgeTag_mean',
+            # 'LargeCategory_mean',
+            # 'TimeElapsed_category_mean',
+            # 'weekday_mean',
+            # 'hour_mean',
+
+            # 과적합 위헙
+            # 'userID_category',
+            # 'userID_assessmentItemID_category',
+            # 'userID_testId_category',
+            # 'userID_KnowledgeTag_category',
+            # 'userID_LargeCategory_category',
+            # 'userID_TimeElapsed_category_category',
+            # 'userID_weekday_category',
+            # 'userID_hour_category',
+
+            # 과적합 위헙
+            # 'correct_ItemID_count',
+            # 'whole_ItemID_count',
+            # 'incorrect_ItemID_count',
+            # 'correct_tag_count',
+            # 'whole_tag_count',
+            # 'incorrect_tag_count',
+
+
+            # 'userID_time_mean',
+            # 'assessmentItemID_time_mean',
+            # 'testId_time_mean',
+            # 'KnowledgeTag_time_mean',
+
+            # last_answer
+            # 'last_answerCode1', 'last_answerCode2', 'last_answerCode3', 'last_answerCode4',
+            # 'last_answerCode5', 'last_answerCode6', 'last_answerCode7',
+            # 'last_answerCode8', 'last_answerCode9', 'last_answerCode10',
+
+            # 'accuracy_avg_by_aid',
+            # 'relative_correct_aid',
+            # 'relative_avg_correct_aid',
+            # 'accuracy_avg_by_tags',
+            # 'relative_correct_tags',
+            # 'relative_avg_correct_tags'
+           ]
+
+  # 정답 데이터
+  label: 'answerCode'
+
+  # data_process에서 drop할 데이터 [사용 중지]
+  # drop_feature: ['Timestamp']
+
+  # merge 할때 검증 데이터
+  valid_feature: ['userID', 'assessmentItemID', 'testId', 'KnowledgeTag', 'LargeCategory', 'TimeElapsed', 'answerCode']
+
+catboost_setting:
+  early_stop_rounds: 10
+  drop_columns: []
+
+catboost_hyperparameters:
+  CatBoostRegressor:
+    iterations: 1500
+    learning_rate: 0.1
+    loss_function: RMSE
+    random_seed: 42
+    use_best_model: True
+    task_type: GPU
+    bagging_temperature: 1
+    border_count: 254
+    #verbose : 20
+    
+    
+
+  CatBoostClassifier:
+    iterations: 1500
+    learning_rate: 0.1
+    eval_metric: AUC
+    random_seed: 42
+    use_best_model: True
+    #task_type: GPU
+    bagging_temperature: 1
+    border_count: 254
+    #verbose : 20
+  
+  XGBClassifier:
+    booster: gbtree
+    colsample_bylevel: 0.8
+    colsample_bytree: 0.8
+    gamma: 0
+    max_depth: 8
+    min_child_weight: 4
+    n_estimators: 3000
+    #verbose: 30
+    nthread: 4
+    objective: "binary:logistic"
+    random_state: 42
+    early_stopping_rounds: 10
+    tree_method: gpu_hist
+    enable_categorical: True
+  
