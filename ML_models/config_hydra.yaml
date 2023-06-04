@@ -1,24 +1,24 @@
 # catboost_hydra.yaml
 hydra:
   run:
-    dir: /Users/macbookair/Desktop/Project/dkt/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: /opt/ml/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}
 
-catboost_log_file: /Users/macbookair/Desktop/Project/dkt/project/level2_dkt-recsys-10/catboost_info/catboost_training.json
-destination_file: /Users/macbookair/Desktop/Project/dkt/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}/catboost_training.json
-dir_name: /Users/macbookair/Desktop/Project/dkt/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}
+catboost_log_file: /opt/ml/project/level2_dkt-recsys-10/catboost_info/catboost_training.json
+destination_file: /opt/ml/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}/catboost_training.json
+dir_name: /opt/ml/project/level2_dkt-recsys-10/ML_models/log/${now:%Y-%m-%d}/${now:%H-%M-%S}
 
 
 model:
   select_model: catboost_classifier # [catboost_classifier, catboost_regressor,xgboost_classifier]
 
 dataset:
-  dataset: /Users/macbookair/Desktop/Project/dkt/project/BoostCamp_DKT_Database/preprocess/ML_Main_Dataset/dataset_all_data.csv
+  dataset: /opt/ml/project/BoostCamp_DKT_Database/preprocess/ML_Main_Dataset/dataset_all_data.csv
   # dataset: /opt/ml/project/BoostCamp_DKT_Database/preprocess/Sequence_Main_Dataset/test_dataset_all_data.csv
-  submission: /Users/macbookair/Desktop/Project/dkt/project/BoostCamp_DKT_Database/preprocess/ML_Main_Dataset/submission_all_data.csv
+  submission: /opt/ml/project/BoostCamp_DKT_Database/preprocess/ML_Main_Dataset/submission_all_data.csv
 
 dataset_feature:
-  train_data_cut: tail_one # [all, head, tail], [head_tail_one, head_tail_group_one, head_one, tail_one] - userID별 첫 문제, 마지막 문제를 test에 사용
-  test_split: 0.1 # 1> value > 0
+  train_data_cut: all # [all, head, tail], [head_tail_one, head_tail_group_one, head_one, tail_one] - userID별 첫 문제, 마지막 문제를 test에 사용
+  test_split: 0.5 # 1> value > 0
   feature: [
             # Base feature [base데이터 기반으로 검증을 하기 때문에 변경 금지]
             'userID', 'assessmentItemID', 'testId', 'Timestamp',
