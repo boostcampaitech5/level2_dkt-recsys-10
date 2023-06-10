@@ -1,4 +1,4 @@
-![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/85290ef4-003a-4add-8f3c-188565d2a3c0)
+![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/08c5f7f1-7675-4ddb-b05c-bffafffe5619)
 
 
 
@@ -51,14 +51,14 @@ DKT는 Deep Knowledge Tracing의 약자로 우리의 "지식 상태"를 추적�
 </details>
 
 ## 팀원
-| ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/20b1b5d9-4dbf-488c-b372-ea9aea769007) | ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/3030492b-2ce4-4595-a8f0-8f290ad90710) | ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/d6128d5f-3070-40c0-8713-a9e16a3c6cbd) | ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/c5a917b0-cc39-4dba-a1e3-2335e1e4a1bf) | ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/4ac6cbcc-4c7c-4c6f-ba21-e94c70bb4ea9) |
+| ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/9a929688-e9fa-4d0e-96af-a6c838f9f221) | ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/249da5de-3440-4535-978a-ee898034c7da) | ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/376a2e80-619d-4e5d-ae74-5425e10896b3) | ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/17048a46-9566-430e-b7d8-2d3852cbf99d) | ![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/c4e5ed48-8fda-47a1-9fcf-a37f37ac4198) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |             [김동현](https://github.com/llsy159)             |          [백현주](https://github.com/alexandra9975)          |           [장형규](https://github.com/BrotherGyu)            |            [채민지](https://github.com/chaemj97)             |        [황선우](https://github.com/Vintage-lavender)         |
 | 데이터 전처리<br /> CatBoost, LGBM<br /> XGBoost 실험<br />UltraGCN 시도 |               데이터 전처리<br />XGB모델 실험                |  데이터 전처리<br />Catboost, XGBoost<br />hydra, rule base  | 데이터 전처리<br />Saint+, LGBM<br />LSTM 모델 설계 및 실험  |   데이터 전처리<br />LightGCN 모델<br />튜닝 및 코드 구현    |
 
 ## \- Public Score
-![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/84cd04d6-6f9d-479e-9e86-45912180798a)
+![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/a18fa5ef-93c9-4a76-8308-c372c35dfc22)
 
 ## \- Private Score
-![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/22f7c891-7321-4871-9425-8fdbdfcec45f)
+![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/cb054e32-eeff-4166-b63a-e9419c368241)
 
