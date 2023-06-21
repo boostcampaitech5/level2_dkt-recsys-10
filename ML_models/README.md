@@ -1,5 +1,6 @@
 # Flow Chart
-![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/7f0a6bcf-3490-492f-adf4-5303f6e0b029)
+![image](https://github.com/boostcampaitech5/level2_dkt-recsys-10/assets/60868825/cbac6cdc-0fbc-45bd-a9d1-d164b61410a7)
+
 
 [[Project] DKT 대회 - Modeling](https://brothergyu.github.io/boostcamp_ai/DKT_Modeling/)
 
